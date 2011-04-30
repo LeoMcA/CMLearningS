@@ -17,7 +17,11 @@ else $page = "notes";
         echo "<ul>";
         foreach($filenames as $value) {
             $filename = explode("-",$value);
-            echo "<li>" . $filename[0]; "</li>";
+            $subjects[] = $filename[0];
+        }
+        $subjects_unique = array_unique($subjects);
+        foreach($subjects_unique as $value) {
+            echo "<li>" . $value . "</li>";
         }
         echo "</ul>";
     ?>
