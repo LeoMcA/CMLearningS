@@ -26,6 +26,19 @@ else $page = "notes";
         }
         echo "</ul>";
     }
+    if($page=="topic-index")
+        {
+        echo "<ul>";
+        foreach($filenames as $value) {
+            $filename = explode("-",$value);
+            $topics[] = $filename[1];
+        }
+        $topics_unique = array_unique($topics);
+        foreach($topics_unique as $value) {
+            echo "<li><a href=\"&topic=" . $value . "\">" . $value . "</a></li>";
+        }
+        echo "</ul>";
+    }
     ?>
 </body>
 </html>
