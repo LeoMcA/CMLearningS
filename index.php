@@ -7,7 +7,7 @@ else $page = "notes";
 <!doctype html>
 <html>
 <head>
-    <title></title>
+    <title><?php if($page=="index") echo "Subject Index"; elseif($page=="topic-index") echo "Topic Index for" . $_GET["subject"]; elseif($page=="subtopic-index") echo "Subtopic Index for" . $_GET["topic"]; elseif($page=="notes") echo "Notes for" . $_GET["topic"]; ?></title>
 </head>
 <body>
 </body>
