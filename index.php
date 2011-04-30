@@ -14,6 +14,7 @@ else $page = "notes";
     <?php
     $filenames = glob("*-*-*.xml");
     if($page=="index")
+        {
         echo "<ul>";
         foreach($filenames as $value) {
             $filename = explode("-",$value);
@@ -24,6 +25,7 @@ else $page = "notes";
             echo "<li><a href=\"index.php?subject=" . $value . "\">" . $value . "</a></li>";
         }
         echo "</ul>";
+    }
     ?>
 </body>
 </html>
