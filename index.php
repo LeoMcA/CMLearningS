@@ -14,7 +14,7 @@ else $page = "notes";
     <?php
     $filenames = glob("*-*-*.xml");
     if($page=="index")
-        foreach($filnames as $value) {
+        foreach($filenames as $value) {
             $filename = explode("-",$value);
             echo $filename[0];
         }
