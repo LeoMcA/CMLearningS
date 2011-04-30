@@ -35,7 +35,21 @@ else $page = "notes";
         }
         $topics_unique = array_unique($topics);
         foreach($topics_unique as $value) {
-            echo "<li><a href=\"index.html?subject=" . $_GET["subject"] . "&topic=" . $value . "\">" . $value . "</a></li>";
+            echo "<li><a href=\"index.php?subject=" . $_GET["subject"] . "&topic=" . $value . "\">" . $value . "</a></li>";
+        }
+        echo "</ul>";
+    }
+    ?>
+    if($page=="subtopic-index")
+        {
+        echo "<ul>";
+        foreach($filenames as $value) {
+            $filename = explode("-",$value);
+            if($_GET["subject"]==$filename[0]) if($_GET["topic"]==$filename[1]) $subtopics[] = $filename[2];
+        }
+        $subtopics_unique = array_unique($subtopics);
+        foreach($subtopics_unique as $value) {
+            echo "<li><a href=\"index.php?subject=" . $_GET["subject"] . "&topic=" . $_GET["topic"] . "&subtopic=" . &value . "\">" . $value . "</a></li>";
         }
         echo "</ul>";
     }
