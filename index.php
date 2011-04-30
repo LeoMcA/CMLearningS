@@ -39,7 +39,6 @@ else $page = "notes";
         }
         echo "</ul>";
     }
-    ?>
     if($page=="subtopic-index")
         {
         echo "<ul>";
