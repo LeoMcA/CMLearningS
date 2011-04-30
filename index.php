@@ -35,7 +35,7 @@ else $page = "notes";
         }
         $topics_unique = array_unique($topics);
         foreach($topics_unique as $value) {
-            echo "<li><a href=\"index.html?subject=" . $_GET["subject"]==$ . "&topic=" . $value . "\">" . $value . "</a></li>";
+            echo "<li><a href=\"index.html?subject=" . $_GET["subject"] . "&topic=" . $value . "\">" . $value . "</a></li>";
         }
         echo "</ul>";
     }
