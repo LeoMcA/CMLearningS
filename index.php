@@ -48,7 +48,7 @@ else $page = "notes";
         }
         $subtopics_unique = array_unique($subtopics);
         foreach($subtopics_unique as $value) {
-            echo "<li><a href=\"index.php?subject=" . $_GET["subject"] . "&topic=" . $_GET["topic"] . "&subtopic=" . &value . "\">" . $value . "</a></li>";
+            echo "<li><a href=\"index.php?subject=" . $_GET["subject"] . "&topic=" . $_GET["topic"] . "&subtopic=" . $value . "\">" . $value . "</a></li>";
         }
         echo "</ul>";
     }
