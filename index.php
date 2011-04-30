@@ -31,11 +31,11 @@ else $page = "notes";
         echo "<ul>";
         foreach($filenames as $value) {
             $filename = explode("-",$value);
-            $topics[] = $filename[1];
+            if($_GET["subject"]==$filename[0]) $topics[] = $filename[1];
         }
         $topics_unique = array_unique($topics);
         foreach($topics_unique as $value) {
-            echo "<li><a href=\"&topic=" . $value . "\">" . $value . "</a></li>";
+            echo "<li><a href=\"index.html?subject=" . $_GET["subject"]==$ . "&topic=" . $value . "\">" . $value . "</a></li>";
         }
         echo "</ul>";
     }
