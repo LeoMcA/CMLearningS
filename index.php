@@ -21,7 +21,7 @@ else $page = "notes";
         }
         $subjects_unique = array_unique($subjects);
         foreach($subjects_unique as $value) {
-            echo "<li><a href\"index.php?subject=" . $value . "\">" . $value . "</a></li>";
+            echo "<li><a href=\"index.php?subject=" . $value . "\">" . $value . "</a></li>";
         }
         echo "</ul>";
     ?>
