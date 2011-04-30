@@ -14,10 +14,12 @@ else $page = "notes";
     <?php
     $filenames = glob("*-*-*.xml");
     if($page=="index")
+        echo "<ul>";
         foreach($filenames as $value) {
             $filename = explode("-",$value);
-            echo $filename[0];
+            echo "<li>" . $filename[0]; "</li>";
         }
+        echo "</ul>";
     ?>
 </body>
 </html>
