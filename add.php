@@ -1,5 +1,5 @@
 <?php
-if(file_exists('db.sqlite') {
+if(file_exists('db.sqlite')) {
     try {
         $database = new SQLiteDatabase('db.sqlite', 0666, $error);
     }
