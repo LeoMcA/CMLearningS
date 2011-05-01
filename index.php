@@ -17,11 +17,13 @@ function accessdb() {
         if($page=="notes") if($value[Subject]==$_GET["subject"]) if($value[Topic]==$_GET["topic"]) if($value[Subtopic]==$_GET["subtopic"]) $item[] = $value[Notes];
     }
     $item = array_unique($item);
-    echo "<ul>";
-    foreach($item as $value) {
-        echo "<li><a href=\"index.php?subject="; if($page=="topic-index") echo $_GET["subject"]."&topic="; if($page=="subtopic-index") echo $_GET["topic"]."&subtopic="; echo $value."\">".$value."</a></li>";
+    if($page=="notes") echo $item[0]; else {
+        echo "<ul>";
+        foreach($item as $value) {
+            echo "<li><a href=\"index.php?subject="; if($page=="topic-index") echo $_GET["subject"]."&topic="; if($page=="subtopic-index") echo $_GET["topic"]."&subtopic="; echo $value."\">".$value."</a></li>";
+        }
+        echo "</ul>";
     }
-    echo "</ul>";
 }
 ?>
 <!doctype html>
