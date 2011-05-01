@@ -10,7 +10,7 @@ function indexList($name) {
     $query = "SELECT".$name."FROM Revision";
     $result = sqlite_array_query($database, $query);
     foreach($result as $value) {
-        $item[] = $value['$name'];
+        $item[] = $value[$name];
     }
     echo "<ul>";
     foreach($item as $value0) {
