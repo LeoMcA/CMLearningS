@@ -6,6 +6,7 @@ elseif($_GET["subtopic"]==NULL) $page = "subtopic-index";
 else $page = "notes";
 
 function indexList($name) {
+    global $page;
     $query = "SELECT ".$name." FROM Revision";
     $result = sqlite_array_query(sqlite_open('db.sqlite', 0666, $error), $query);
     $item = array();
