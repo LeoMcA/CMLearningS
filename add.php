@@ -1,6 +1,39 @@
 <?php
-$file = fopen($_POST["subject"] . "-" . $_POST["topic"] . "-" . $_POST["subtopic"] . ".xml","w");
-echo fwrite($file,"<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><root><subject>" . $_POST["subject"] . "</subject><topic>" . $_POST["topic"] . "</topic><subtopic>" . $_POST["subtopic"] . "</subtopic><notes>" . $_POST["notes"] . "</notes></root>");
-fclose($file);
+if(file_exists('db.sqlite') {
+    try {
+        $database = new SQLiteDatabase('db.sqlite', 0666, $error);
+    }
+    
+    catch(Exception $e) {
+        die($error);
+    }
+}
+
+else {
+    try {
+        $database = new SQLiteDatabase('db.sqlite', 0666, $error);
+    }
+    
+    catch(Exception $e) {
+        die($error);
+    }
+    
+    $query = 'CREATE TABLE Table' .
+         '(Subject TEXT, Topic TEXT, Subtopic TEXT, Notes TEXT)';
+         
+    if(!$database->queryExec($query, $error)) {
+        die($error);
+    }
+}
+
+//insert data into database
+$query =
+    'INSERT INTO Table (Subject, Topic, Subtopic, Notes) ' .
+    'VALUES ("' . $_POST["subject"] . '", "' . $_POST["topic"] . '", "' . $_POST["subtopic"] . '", "' . $_POST["notes"] . '"); '
+
+if(!$database->queryExec($query, $error)) {
+    die($error);
+}
+
 header( 'Location: index.php?subject=' .  $_POST["subject"] . '&topic=' . $_POST["topic"] . '&subtopic=' . $_POST["subtopic"]);
 ?>
