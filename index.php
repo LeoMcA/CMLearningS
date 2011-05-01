@@ -43,6 +43,7 @@ else $page = "notes";
         {
         echo "<ul>";
         foreach($filenames as $value) {
+            $temp = explode(".",$value);
             $filename = explode("-",$value);
             if($_GET["subject"]==$filename[0]) if($_GET["topic"]==$filename[1]) $subtopics[] = $filename[2];
         }
@@ -53,7 +54,7 @@ else $page = "notes";
         echo "</ul>";
     }
     if($page=="notes"){
-        $xml = simplexml_load_file($_GET["subject"] . "-" . $_GET["topic"] . "-" . $_GET["subtopic"] . ".xml");
+        $xml = simplexml_load_file($_GET["subject"] . "-" . $_GET["topic"] . "-" . $_GET["subtopic"] ".xml");
         echo $xml->root->notes;
     }
     ?>
