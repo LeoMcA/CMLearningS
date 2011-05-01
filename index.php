@@ -15,6 +15,7 @@ function indexList() {
         if($page=="topic-index") if($value[Subject]==$_GET["subject"]) $item[] = $value[Topic];
         if($page=="subtopic-index") if($value[Subject]==$_GET["subject"]) if($value[Topic]==$_GET["topic"]) $item[] = $value[Subtopic];
     }
+    $item = array_unique($item);
     echo "<ul>";
     foreach($item as $value) {
         echo "<li><a href=\"index.php?subject="; if($page=="topic-index") echo $_GET["subject"]."&topic="; if($page=="subtopic-index") echo $_GET["topic"]."&subtopic="; echo $value."\">".$value."</a></li>";
