@@ -54,7 +54,7 @@ else $page = "notes";
     }
     if($page=="notes"){
         $xml = simplexml_load_file($_GET["subject"] . "-" . $_GET["topic"] . "-" . $_GET["subtopic"] . ".xml");
-        echo $xml->notes;
+        echo $xml->root->notes;
     }
     ?>
 </body>
