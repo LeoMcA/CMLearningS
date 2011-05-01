@@ -10,11 +10,11 @@ function indexList($name) {
     $query = "SELECT".$name."FROM Revision";
     $result = sqlite_array_query($database, $query);
     foreach($result as $value) {
-        $item[] = $value['Subject'];
+        $item[] = $value['$name'];
     }
     echo "<ul>";
     foreach($item as $value0) {
-        echo "<li><a href=\"index.php?subject="; if($page=="topic-index") echo $_GET["subject"]."&topic="; if($page=="subtopic-index") echo $_GET["topic"]."&subtopic="; echo $value."\">".$value0."</a></li>";
+        echo "<li><a href=\"index.php?subject="; if($page=="topic-index") echo $_GET["subject"]."&topic="; if($page=="subtopic-index") echo $_GET["topic"]."&subtopic="; echo $value0."\">".$value0."</a></li>";
     }
     echo "</ul>";
 }
