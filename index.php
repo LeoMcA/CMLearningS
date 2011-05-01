@@ -1,5 +1,5 @@
 <?php
-if(file_exists('db.sqlite')); else header( 'Location: add.html' );
+if(file_exists('db.sqlite')) echo ''; else header( 'Location: add.html' );
 if($_GET["subject"]==NULL) $page = "index";
 elseif($_GET["topic"]==NULL) $page = "topic-index";
 elseif($_GET["subtopic"]==NULL) $page = "subtopic-index";
