@@ -11,7 +11,7 @@ if(file_exists('db.sqlite')) {
 
 else {
     try {
-        $database = new SQLiteDatabase('db.sqlite', 0666, $error);
+        $database = sqlite_open('db.sqlite', 0666, $error);
     }
     
     catch(Exception $e) {
