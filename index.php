@@ -1,4 +1,6 @@
 <?php
+if(file_exists('db.sqlite')) $dbhandle = sqlite_open('db.sqlite', 0666, $error); else <?php header( 'Location: add.html' );
+
 if($_GET["subject"]==NULL) $page = "index";
 elseif($_GET["topic"]==NULL) $page = "topic-index";
 elseif($_GET["subtopic"]==NULL) $page = "subtopic-index";
@@ -16,12 +18,10 @@ else $page = "notes";
     if($page=="index")
         {
         echo "<ul>";
-        foreach($filenames as $value) {
-            $filename = explode("-",$value);
-            $subjects[] = $filename[0];
-        }
-        $subjects_unique = array_unique($subjects);
-        foreach($subjects_unique as $value) {
+        $query = "SELECT Subject FROM Table";
+        $result = sqlite_query($dbhandle, $query);
+        $subjects = array_unique(sqlite_fetch_array($result, SQLITE_NUM));
+        foreach($subjects as $value) {
             echo "<li><a href=\"index.php?subject=" . $value . "\">" . $value . "</a></li>";
         }
         echo "</ul>";
