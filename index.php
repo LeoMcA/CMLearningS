@@ -1,5 +1,5 @@
 <?php
-if(file_exists('db.sqlite')) $dbhandle = sqlite_open('db.sqlite', 0666, $error); else header( 'Location: add.html' );
+if(file_exists('db.sqlite')) $database = sqlite_open('db.sqlite', 0666, $error); else header( 'Location: add.html' );
 
 if($_GET["subject"]==NULL) $page = "index";
 elseif($_GET["topic"]==NULL) $page = "topic-index";
@@ -19,7 +19,7 @@ else $page = "notes";
         {
         echo "<ul>";
         $query = "SELECT Subject FROM Table";
-        $result = sqlite_query($dbhandle, $query);
+        $result = sqlite_query($database, $query);
         $subjects = array_unique(sqlite_fetch_array($result, SQLITE_NUM));
         foreach($subjects as $value) {
             echo "<li><a href=\"index.php?subject=" . $value . "\">" . $value . "</a></li>";
