@@ -1,5 +1,5 @@
 <?php
-if(file_exists('db.sqlite')) $database = "sqlite_open('db.sqlite', 0666, $error)"; else header( 'Location: add.html' );
+if(file_exists('db.sqlite')); else header( 'Location: add.html' );
 if($_GET["subject"]==NULL) $page = "index";
 elseif($_GET["topic"]==NULL) $page = "topic-index";
 elseif($_GET["subtopic"]==NULL) $page = "subtopic-index";
@@ -7,7 +7,7 @@ else $page = "notes";
 
 function indexList($name) {
     $query = "SELECT ".$name." FROM Revision";
-    $result = sqlite_array_query($database, $query);
+    $result = sqlite_array_query(sqlite_open('db.sqlite', 0666, $error), $query);
     $item = array();
     foreach($result as $value) {
         $item[] = $value[$name];
