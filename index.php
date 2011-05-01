@@ -29,12 +29,10 @@ else $page = "notes";
     if($page=="topic-index")
         {
         echo "<ul>";
-        foreach($filenames as $value) {
-            $filename = explode("-",$value);
-            if($_GET["subject"]==$filename[0]) $topics[] = $filename[1];
-        }
-        $topics_unique = array_unique($topics);
-        foreach($topics_unique as $value) {
+        $query = "SELECT Topic FROM Revision";
+        $result = sqlite_query($database, $query);
+        $topics = array_unique(sqlite_fetch_array($result, SQLITE_NUM));
+        foreach($topics as $value) {
             echo "<li><a href=\"index.php?subject=" . $_GET["subject"] . "&topic=" . $value . "\">" . $value . "</a></li>";
         }
         echo "</ul>";
@@ -42,20 +40,15 @@ else $page = "notes";
     if($page=="subtopic-index")
         {
         echo "<ul>";
-        foreach($filenames as $value) {
-            $temp = explode(".",$value);
-            $filename = explode("-",$temp[0]);
-            if($_GET["subject"]==$filename[0]) if($_GET["topic"]==$filename[1]) $subtopics[] = $filename[2];
-        }
-        $subtopics_unique = array_unique($subtopics);
-        foreach($subtopics_unique as $value) {
+        $query = "SELECT Subtopic FROM Revision";
+        $result = sqlite_query($database, $query);
+        $subtopics = array_unique(sqlite_fetch_array($result, SQLITE_NUM));
+        foreach($subtopics as $value) {
             echo "<li><a href=\"index.php?subject=" . $_GET["subject"] . "&topic=" . $_GET["topic"] . "&subtopic=" . $value . "\">" . $value . "</a></li>";
         }
         echo "</ul>";
     }
     if($page=="notes") {
-        $xml = simplexml_load_file($_GET["subject"] . "-" . $_GET["topic"] . "-" . $_GET["subtopic"] . ".xml");
-        echo $xml;
     }
     ?>
 </body>
