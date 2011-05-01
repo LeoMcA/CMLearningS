@@ -18,7 +18,7 @@ else $page = "notes";
     if($page=="index")
         {
         echo "<ul>";
-        $query = "SELECT Subject FROM Table";
+        $query = "SELECT Subject FROM Revision";
         $result = sqlite_query($database, $query);
         $subjects = array_unique(sqlite_fetch_array($result, SQLITE_NUM));
         foreach($subjects as $value) {
