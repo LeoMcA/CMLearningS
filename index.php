@@ -11,7 +11,7 @@ function indexList() {
     $result = sqlite_array_query(sqlite_open('db.sqlite', 0666, $error), $query);
     $item = array();
     foreach($result as $value) {
-        if($page=="index") $item[] = $value[Topic];
+        if($page=="index") $item[] = $value[Subject];
         if($page=="topic-index") if($value[Subject]==$_GET["subject"]) $item[] = $value[Topic];
         if($page=="subtopic-index") if($value[Subject]==$_GET["subject"]) if($value[Topic]==$_GET["topic"]) $item[] = $value[Subtopic];
     }
