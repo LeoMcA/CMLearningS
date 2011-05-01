@@ -1,16 +1,10 @@
 <?php
-if(file_exists('db.sqlite')) {
-    $database = sqlite_open('db.sqlite', 0666, $error);
-}
-
-else {
+$database = sqlite_open('db.sqlite', 0666, $error);
     
-    $database = sqlite_open('db.sqlite', 0666, $error);
-    
-    $query = 'CREATE TABLE Revision' .
+$query = 'CREATE TABLE Revision' .
          '(Subject TEXT, Topic TEXT, Subtopic TEXT, Notes TEXT)';
     
-    sqlite_query($database, $query);
+sqlite_query($database, $query);
 }
 
 //insert data into database
