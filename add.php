@@ -1,22 +1,11 @@
 <?php
 if(file_exists('db.sqlite')) {
-    try {
-        $database = new SQLiteDatabase('db.sqlite', 0666, $error);
-    }
-    
-    catch(Exception $e) {
-        die($error);
-    }
+    $database = sqlite_open('db.sqlite', 0666, $error);
 }
 
 else {
-    try {
-        $database = sqlite_open('db.sqlite', 0666, $error);
-    }
     
-    catch(Exception $e) {
-        die($error);
-    }
+    $database = sqlite_open('db.sqlite', 0666, $error);
     
     $query = 'CREATE TABLE Table' .
          '(Subject TEXT, Topic TEXT, Subtopic TEXT, Notes TEXT)';
