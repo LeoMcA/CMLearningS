@@ -13,8 +13,8 @@ function indexList($name) {
         $item[] = $value[$name];
     }
     echo "<ul>";
-    foreach($item as $value0) {
-        echo "<li><a href=\"index.php?subject="; if($page=="topic-index") echo $_GET["subject"]."&topic="; if($page=="subtopic-index") echo $_GET["topic"]."&subtopic="; echo $value0."\">".$value0."</a></li>";
+    foreach($item as $value) {
+        echo "<li><a href=\"index.php?subject="; if($page=="topic-index") echo $_GET["subject"]."&topic="; if($page=="subtopic-index") echo $_GET["topic"]."&subtopic="; echo $value."\">".$value."</a></li>";
     }
     echo "</ul>";
 }
