@@ -19,9 +19,11 @@ else $page = "notes";
         {
         echo "<ul>";
         $query = "SELECT Subject FROM Revision";
-        $result = sqlite_query($database, $query);
-        $subjects = array_unique(sqlite_fetch_array($result, SQLITE_NUM));
-        foreach($subjects as $value) {
+        $result = sqlite_array_query($database, $query);
+        foreach($result as $value) {
+            $Subject[] = $value['Subject'];
+        }
+        foreach($Subject as $value) {
             echo "<li><a href=\"index.php?subject=" . $value . "\">" . $value . "</a></li>";
         }
         echo "</ul>";
