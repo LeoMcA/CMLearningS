@@ -5,15 +5,16 @@ elseif($_GET["topic"]==NULL) $page = "topic-index";
 elseif($_GET["subtopic"]==NULL) $page = "subtopic-index";
 else $page = "notes";
 
-function indexList() {
+function accessdb() {
     global $page;
-    $query = "SELECT Subject, Topic, Subtopic FROM Revision";
+    $query = "SELECT Subject, Topic, Subtopic, Notes FROM Revision";
     $result = sqlite_array_query(sqlite_open('db.sqlite', 0666, $error), $query);
     $item = array();
     foreach($result as $value) {
         if($page=="index") $item[] = $value[Subject];
         if($page=="topic-index") if($value[Subject]==$_GET["subject"]) $item[] = $value[Topic];
         if($page=="subtopic-index") if($value[Subject]==$_GET["subject"]) if($value[Topic]==$_GET["topic"]) $item[] = $value[Subtopic];
+        if($page=="notes") if($value[Subject]==$_GET["subject"]) if($value[Topic]==$_GET["topic"]) if($value[Subtopic]==$_GET["subtopic"]) $item[] = $value[Notes];
     }
     $item = array_unique($item);
     echo "<ul>";
@@ -31,11 +32,10 @@ function indexList() {
 <body>
     <h1><?php if($page=="index") echo "Subject Index"; elseif($page=="topic-index") echo "Topic Index for " . $_GET["subject"]; elseif($page=="subtopic-index") echo "Subtopic Index for " . $_GET["topic"]; elseif($page=="notes") echo "Notes for " . $_GET["subtopic"]; ?></h1>
     <?php
-    if($page=="index") indexList();
-    if($page=="topic-index") indexList();
-    if($page=="subtopic-index") indexList();
-    if($page=="notes") {
-    }
+    if($page=="index") accessdb();
+    if($page=="topic-index") accessdb();
+    if($page=="subtopic-index") accessdb();
+    if($page=="notes") accessdb();
     ?>
 </body>
 </html>
