@@ -5,6 +5,7 @@ function whatPage() {
     elseif($_GET["topic"]==NULL) $page = "topic-index";
     elseif($_GET["subtopic"]==NULL) $page = "subtopic-index";
     else $page = "notes";
+    global $page;
 }
 whatPage();
 function indexList($name) {
