@@ -9,6 +9,7 @@ else $page = "notes";
 function indexList($name) {
     $query = "SELECT".$name."FROM Revision";
     $result = sqlite_array_query($database, $query);
+    $item = array();
     foreach($result as $value) {
         $item[] = $value[$name];
     }
