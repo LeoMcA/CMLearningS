@@ -6,7 +6,7 @@ function whatPage() {
     elseif($_GET["subtopic"]==NULL) $page = "subtopic-index";
     else $page = "notes";
 }
-
+whatPage();
 function indexList($name) {
     whatPage();
     $query = "SELECT ".$name." FROM Revision";
