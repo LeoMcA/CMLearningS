@@ -1,15 +1,11 @@
 <?php
 if(file_exists('db.sqlite')); else header( 'Location: add.html' );
-function whatPage() {
-    if($_GET["subject"]==NULL) $page = "index";
-    elseif($_GET["topic"]==NULL) $page = "topic-index";
-    elseif($_GET["subtopic"]==NULL) $page = "subtopic-index";
-    else $page = "notes";
-    global $page;
-}
-whatPage();
+if($_GET["subject"]==NULL) $page = "index";
+elseif($_GET["topic"]==NULL) $page = "topic-index";
+elseif($_GET["subtopic"]==NULL) $page = "subtopic-index";
+else $page = "notes";
+
 function indexList($name) {
-    whatPage();
     $query = "SELECT ".$name." FROM Revision";
     $result = sqlite_array_query(sqlite_open('db.sqlite', 0666, $error), $query);
     $item = array();
