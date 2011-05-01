@@ -44,7 +44,7 @@ else $page = "notes";
         echo "<ul>";
         foreach($filenames as $value) {
             $temp = explode(".",$value);
-            $filename = explode("-",$value);
+            $filename = explode("-",$temp[0]);
             if($_GET["subject"]==$filename[0]) if($_GET["topic"]==$filename[1]) $subtopics[] = $filename[2];
         }
         $subtopics_unique = array_unique($subtopics);
