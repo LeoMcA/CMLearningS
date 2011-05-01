@@ -14,9 +14,7 @@ else {
 }
 
 //insert data into database
-$query =
-    'INSERT INTO Table (Subject, Topic, Subtopic, Notes) ' .
-    'VALUES ("' . $_POST["subject"] . '", "' . $_POST["topic"] . '", "' . $_POST["subtopic"] . '", "' . $_POST["notes"] . '");'
+$query = 'INSERT INTO Table (Subject, Topic, Subtopic, Notes) VALUES ("' . $_POST["subject"] . '", "' . $_POST["topic"] . '", "' . $_POST["subtopic"] . '", "' . $_POST["notes"] . '");';
     sqlite_query($query);
 ?>
 <?php header( 'Location: index.php?subject=' .  $_POST["subject"] . '&topic=' . $_POST["topic"] . '&subtopic=' . $_POST["subtopic"]); ?>
