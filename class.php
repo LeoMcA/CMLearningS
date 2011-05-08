@@ -1,20 +1,33 @@
 <?php
 class page {
     
-    var $page
+    var $page;
     
-    function set_page() {
+    function get_page() {
         if($_GET["subject"]==NULL) $this->page = "index";
             elseif($_GET["topic"]==NULL) $this->page = "topic-index";
                 elseif($_GET["subtopic"]==NULL) $this->page = "subtopic-index";
                     else $this->page = "notes";
     }
     
-    function get_page() {
+    function return_page() {
         return $this->page;
+    }
+    
 }
 
 class database {
+    
+    var $database
+    
+    function set_database() {
+        $db = sqlite_open('db.sqlite', 0666, $error);
+        $query = 'CREATE TABLE Revision' . '(Subject TEXT, Topic TEXT, Subtopic TEXT, Notes TEXT)';
+        sqlite_query($database, $query);
+        $query = 'INSERT INTO Revision (Subject, Topic, Subtopic, Notes) VALUES ("' . $_POST["subject"] . '", "' . $_POST["topic"] . '", "' . $_POST["subtopic"] . '", "' . $_POST["notes"] . '");';
+        sqlite_query($database, $query);
+    }
+    
     function accessdb() {
         global $page;
         $query = "SELECT Subject, Topic, Subtopic, Notes FROM Revision";
