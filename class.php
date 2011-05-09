@@ -18,7 +18,32 @@ class page {
 
 class database {
     
-    var $database
+    var $table;
+    var $database;
+    
+    function set_database($db) {
+        $this->database = sqlite_open($db, 0666, $error);
+    }
+    
+    function get_database() {
+        return $this->database;
+    }
+    
+    function set_table($table_name, $col_name) {
+        $query = 'CREATE TABLE' . $table_name;
+        sqlite_query($this->database, $query);
+    }
+    
+    function get_table() {
+    }
+    
+    function set_column() {
+        $query = 'ALTER TABLE' . $table_name . 'ADD COLUMN' . $col_name;
+        sqlite_query($this->database, $query);
+    }
+    
+    function get_column() {
+    }
     
     function set_database() {
         $db = sqlite_open('db.sqlite', 0666, $error);
