@@ -9,6 +9,7 @@ if(file_exists('db.sqlite')); else header( 'Location: add.html' );
     
     function accessdb() {
     global $database;
+    global $page;
     $query = "SELECT Subject, Topic, Subtopic, Notes FROM Revision";
     $result = $database->arrayQuery($query);
     $item = array();
