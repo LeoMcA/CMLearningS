@@ -1,9 +1,9 @@
 <?php
 if(file_exists('db.sqlite')); else header( 'Location: add.html' );
 
-    include('class.php')
+    include('class.php');
 
-    $page = new page();
+    $page = new index;
     
     $database = new SQLiteDatabase('db.sqlite', 0666);
     
