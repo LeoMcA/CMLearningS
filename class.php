@@ -3,6 +3,13 @@
         
         var $page;
         
+        function __construct() {
+            if($_GET["subject"]==NULL) $this->page = "index";
+            elseif($_GET["topic"]==NULL) $this->page = "topic-index";
+            elseif($_GET["subtopic"]==NULL) $this->page = "subtopic-index";
+            else $this->page = "notes";
+        }
+        
         function set_page() {
             if($_GET["subject"]==NULL) $this->page = "index";
             elseif($_GET["topic"]==NULL) $this->page = "topic-index";
