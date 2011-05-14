@@ -1,4 +1,6 @@
 <?php
+include('class.php');
+
 $database = new SQLiteDatabase('db.sqlite', 0666);
     
 $query = 'CREATE TABLE Revision' .
