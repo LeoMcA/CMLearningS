@@ -8,7 +8,7 @@ $query = 'CREATE TABLE Revision' .
          'INSERT INTO Revision (Subject, Topic, Subtopic, Notes)' .
             'VALUES ("' . $_POST["subject"] . '", "' . $_POST["topic"] . '", "' . $_POST["subtopic"] . '", "' . $_POST["notes"] . '");';
 
-$databse->queryExec($query);
+$database->queryExec($query);
 
 header( 'Location: index.php?subject=' .  $_POST["subject"] . '&topic=' . $_POST["topic"] . '&subtopic=' . $_POST["subtopic"]);
 ?>
