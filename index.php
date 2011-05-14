@@ -3,7 +3,7 @@ if(file_exists('db.sqlite')); else header( 'Location: add.html' );
 
     include('class.php');
 
-    $page = new index;
+    $page = new page;
     
     $database = new SQLiteDatabase('db.sqlite', 0666);
     
