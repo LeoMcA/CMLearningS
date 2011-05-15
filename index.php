@@ -47,7 +47,7 @@
         echo "<ul>";
         foreach($item as $value) {
             echo "<li><a href=\"index.php?subject=";
-            echo $page->if_page($_GET["subject"]."&topic=",$_GET["subject"]."&topic=".$_GET["topic"]."&subtopic="); 
+            echo $page->if_page('',$_GET["subject"]."&topic=",$_GET["subject"]."&topic=".$_GET["topic"]."&subtopic="); 
             echo $value."\">".$value."</a></li>";
         }
         echo "</ul>";
