@@ -48,7 +48,7 @@
         foreach($item as $value) {
             echo "<li><a href=\"index.php?subject=";
             if($page->get_page()=="topic-index") echo $_GET["subject"]."&topic=";
-            if($page->get_page()=="subtopic-index") echo $_GET["topic"]."&subtopic="; 
+            if($page->get_page()=="subtopic-index") echo $_GET["subject"]."&topic=".$_GET["topic"]."&subtopic="; 
             echo $value."\">".$value."</a></li>";
         }
         echo "</ul>";
@@ -62,8 +62,5 @@
 </head>
 <body>
     <h1><?php if($page=="index") echo "Subject Index"; elseif($page=="topic-index") echo "Topic Index for " . $_GET["subject"]; elseif($page=="subtopic-index") echo "Subtopic Index for " . $_GET["topic"]; elseif($page=="notes") echo "Notes for " . $_GET["subtopic"]; ?></h1>
-    <?php
-    accessdb();
-    ?>
 </body>
 </html>
