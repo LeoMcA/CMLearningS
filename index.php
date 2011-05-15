@@ -57,10 +57,9 @@
 <!doctype html>
 <html>
 <head>
-    <title><?php echo $page->if_page("Subject Index","Topic Index for " . $_GET["subject"],"Subtopic Index for " . $_GET["topic"],"Notes for " . $_GET["subtopic"]); ?></title>
 </head>
 <body>
-    <h1><?php echo $page->if_page("Subject Index","Topic Index for " . $_GET["subject"],"Subtopic Index for " . $_GET["topic"],"Notes for " . $_GET["subtopic"]); ?></h1>
+    <title style="display:inline;"><?php echo $page->if_page("Subject Index","Topic Index for ".$_GET["subject"],"Subtopic Index for ".$_GET["topic"],"Notes for ".$_GET["subtopic"]); ?></title>
     <?php
     accessdb();
     ?>
