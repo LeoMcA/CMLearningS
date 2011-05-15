@@ -17,11 +17,11 @@
             else $this->page = "notes";
         }
         
-        function ifecho_page($i,$ti,$sti,$n) {
-            if($this->page = "index") echo $i;
-            if($this->page = "topic-index") echo $ti;
-            if($this->page = "subtopic-index") echo $sti;
-            if($this->page = "notes") echo $n;
+        function if_page($i,$ti,$sti,$n) {
+            if($this->page = "index") return $i;
+            if($this->page = "topic-index") return $ti;
+            if($this->page = "subtopic-index") return $sti;
+            if($this->page = "notes") return $n;
         }
         
         function get_page() {
