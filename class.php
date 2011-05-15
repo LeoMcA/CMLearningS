@@ -18,10 +18,10 @@
         }
         
         function if_page($i,$ti,$sti,$n) {
-            if($this->page = "index") return $i;
-            if($this->page = "topic-index") return $ti;
-            if($this->page = "subtopic-index") return $sti;
-            if($this->page = "notes") return $n;
+            if($this->page=="index") return $i;
+            if($this->page=="topic-index") return $ti;
+            if($this->page=="subtopic-index") return $sti;
+            if($this->page=="notes") return $n;
         }
         
         function get_page() {
