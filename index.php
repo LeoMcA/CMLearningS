@@ -60,7 +60,7 @@
     <title><?php echo $page->if_page("Subject Index","Topic Index for " . $_GET["subject"],"Subtopic Index for " . $_GET["topic"],"Notes for " . $_GET["subtopic"]); ?></title>
 </head>
 <body>
-    <h1><?php if($page=="index") echo "Subject Index"; elseif($page=="topic-index") echo "Topic Index for " . $_GET["subject"]; elseif($page=="subtopic-index") echo "Subtopic Index for " . $_GET["topic"]; elseif($page=="notes") echo "Notes for " . $_GET["subtopic"]; ?></h1>
+    <h1><?php echo $page->if_page("Subject Index","Topic Index for " . $_GET["subject"],"Subtopic Index for " . $_GET["topic"],"Notes for " . $_GET["subtopic"]); ?></h1>
     <?php
     accessdb();
     ?>
