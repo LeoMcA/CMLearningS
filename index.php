@@ -48,7 +48,7 @@
         foreach($item as $value) {
             echo "<li><a href=\"index.php?subject=";
             if($page->get_page()=="topic-index") echo $_GET["subject"]."&topic=";
-            if($page->get_page()=="subtopic-index") echo $_GET["subject"]."&topic=".$_GET["topic"]."&subtopic="; 
+            if($page->get_page()=="subtopic-index") echo $_GET["subject"]."&topic="; echo $_GET["topic"]."&subtopic="; 
             echo $value."\">".$value."</a></li>";
         }
         echo "</ul>";
