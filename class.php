@@ -55,7 +55,7 @@
         function get_user() {
             global $database;
             $hash = sha1($_POST['password']);
-            $query = "SELECT username FROM user WHERE username = '".$_POST['username']."' AND hash = '".$hash.'";";
+            $query = "SELECT username FROM user WHERE username = '".$_POST['username']."' AND hash = '".$hash."';";
             $result = $database->query($query);
             if ($result->numRows() < 1) {
     /* Access denied */
