@@ -41,6 +41,33 @@
         
     }
     
+    class user {
+        
+        var $username;
+        var $password;
+        
+        function set_user() {
+            global $database;
+            $hash = sha1($_POST['password']);
+            $query = 'INSERT INTO user (username,hash) VALUES ('.$_POST['username'].','.$hash.');';
+            $database->queryExec($query);
+        }
+        
+        function get_user() {
+            global $database;
+            $hash = sha1($_POST['password']);
+            $query = 'SELECT username FROM user WHERE username = '.$_POST['username'].' AND hash = '.$hash.';';
+            $result = $database->query($query);
+            if ($result->numRows() < 1) {
+    /* Access denied */
+    echo 'Sorry, your username or password was incorrect!';
+            }
+            else {
+    /* Log user in */
+    printf('Welcome back %s!', $_POST['username']);
+            }
+        }
+    
     function accessdb() {
     global $database;
     global $page;
