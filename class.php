@@ -49,14 +49,14 @@
         function set_user() {
             global $database;
             $hash = sha1($_POST['password']);
-            $query = 'INSERT INTO user (username,hash) VALUES ('.$_POST['username'].','.$hash.');';
+            $query = 'INSERT INTO user (username,hash) VALUES ('.$_POST['username'].','.$hash.");";
             $database->queryExec($query);
         }
         
         function get_user() {
             global $database;
             $hash = sha1($_POST['password']);
-            $query = 'SELECT username FROM user WHERE username = '.$_POST['username'].' AND hash = '.$hash.';';
+            $query = 'SELECT username FROM user WHERE username = '.$_POST['username'].' AND hash = '.$hash.";";
             $result = $database->query($query);
             if ($result->numRows() < 1) {
     /* Access denied */
