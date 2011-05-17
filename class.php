@@ -53,7 +53,7 @@
         }
         
         function get_user() {
-            global $database;
+            $database = new SQLiteDatabase('db.sqlite', 0666);
             $hash = sha1($_POST['password']);
             $query = 'SELECT username FROM user WHERE username = '.$_POST['username'].' AND hash = '.$hash.';';
             $result = $database->query($query);
