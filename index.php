@@ -12,10 +12,11 @@
 <head>
 <script type="text/javascript"
   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  <title><?php $title = new title; echo $title->get_title(); ?>
 </script>
 </head>
 <body>
-    <title style="display:block;"><?php echo $page->if_page("Subject Index","Topic Index for ".$_GET["subject"],"Subtopic Index for ".$_GET["topic"],"Notes for ".$_GET["subtopic"]); ?></title>
+    <h1><?php $title = new title; echo $title->get_title(); ?></h1>
     <?php accessdb(); ?>
 </body>
 </html>
