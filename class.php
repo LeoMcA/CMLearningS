@@ -45,8 +45,10 @@
         
         function set_user() {
             global $database;
+            $query = 'CREATE TABLE user (username TEXT, hash TEXT);';
+            $database->queryExec($query);
             $hash = sha1($_POST['password']);
-            $query = 'INSERT INTO user (username,hash) VALUES ('.$_POST['username'].','.$hash.');';
+            $query = 'INSERT INTO user (username,hash) VALUES ('.$_POST['username'].',\''.$hash.'\');';
             $database->queryExec($query);
         }
         
