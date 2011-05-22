@@ -33,7 +33,7 @@
             "Subject: <br><input type='text' name='subject'><br>" .
             "Topic: <br><input type='text' name='topic'><br>" .
             "Subtopic: <br><input type='text' name='subtopic'><br>" .
-            "Notes: <br><textarea rows='2' cols='20' name='notes'></textarea><br>" .
+            "Notes: <br><textarea style='width:100%;height:500px;' name='notes'></textarea><br>" .
             "<input type='submit' value='Submit'>" .
             "</form>","<form action='login.php' method='post'>" . 
             "Username: <br><input type='text' name='username'><br>" .

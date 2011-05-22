@@ -9,7 +9,7 @@ $query = 'CREATE TABLE Revision' .
 $database->queryExec($query);
 
 $query = 'INSERT INTO Revision (Subject, Topic, Subtopic, Notes)' .
-            'VALUES ("' . $_POST["subject"] . '", "' . $_POST["topic"] . '", "' . $_POST["subtopic"] . '", "' . $_POST["notes"] . '");';
+            'VALUES ("' . $_POST["subject"] . '", "' . $_POST["topic"] . '", "' . $_POST["subtopic"] . '", \'' . $_POST["notes"] . '\');';
 
 $database->queryExec($query);
 
