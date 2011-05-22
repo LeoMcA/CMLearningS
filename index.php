@@ -17,12 +17,15 @@
     <title><?php $title = new title; echo $title->get_title(); ?></title>
     <script type="text/javascript">
         tinyMCE.init({
-            mode : "textareas"
+            theme : "advanced",
+            mode : "textareas",
+            plugins : "fullpage",
+            theme_advanced_buttons3_add : "fullpage"
         });
     </script>
 </head>
 <body>
-    <?php echo "<a href='logout.php'>Logout</a>"; ?>
+    <a href='logout.php'>Logout</a>
     <h1><?php $title = new title; echo $title->get_title(); ?></h1>
     <?php accessdb();
     $user = new user;
