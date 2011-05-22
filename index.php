@@ -19,7 +19,7 @@
     echo "<a href='logout.php'>Logout</a>";
     <h1><?php $title = new title; echo $title->get_title(); ?></h1>
     <?php accessdb(); ?>
-    echo $user->if_loggedin("<form action='add.php' method='post'>" .
+    echo $user->is_loggedin("<form action='add.php' method='post'>" .
             "Subject: <br><input type='text' name='subject'><br>" .
             "Topic: <br><input type='text' name='topic'><br>" .
             "Subtopic: <br><input type='text' name='subtopic'><br>" .
