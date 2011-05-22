@@ -5,6 +5,7 @@
 </head>
 <body>
 <?php
+session_start();
     if(isset($_SESSION['user'])) {
         echo "<form action='add.php' method='post'>" .
             "Subject: <br><input type='text' name='subject'><br>" .
