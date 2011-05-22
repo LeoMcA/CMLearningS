@@ -16,9 +16,10 @@
     <title><?php $title = new title; echo $title->get_title(); ?></title>
 </head>
 <body>
-    echo "<a href='logout.php'>Logout</a>";
+    <?php echo "<a href='logout.php'>Logout</a>"; ?>
     <h1><?php $title = new title; echo $title->get_title(); ?></h1>
     <?php accessdb();
+    $user = new user;
     echo $user->is_loggedin("<form action='add.php' method='post'>" .
             "Subject: <br><input type='text' name='subject'><br>" .
             "Topic: <br><input type='text' name='topic'><br>" .
