@@ -12,8 +12,14 @@
 <!doctype html>
 <html>
 <head>
+    <script type="text/javascript" src="tinymce/tiny_mce/tiny_mce.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <title><?php $title = new title; echo $title->get_title(); ?></title>
+    <script type="text/javascript">
+        tinyMCE.init({
+            mode : "textareas"
+        });
+    </script>
 </head>
 <body>
     <?php echo "<a href='logout.php'>Logout</a>"; ?>
