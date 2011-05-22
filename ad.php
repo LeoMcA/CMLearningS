@@ -20,6 +20,7 @@
         "Password: <br><input type='text' name='password'><br>" .
         "<input type='submit' value='Submit'>" .
         "</form>";
+    }
 ?>
 </body>
 </html>
