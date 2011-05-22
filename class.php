@@ -64,6 +64,14 @@
                 return $result->fetch();
             }
         }
+        
+        function is_loggedin($yes,$no) {
+            if(isset($_SESSION['user'])) {
+                return $yes;
+            }
+            else {
+                return $no;
+            }
     }
     
     function accessdb() {

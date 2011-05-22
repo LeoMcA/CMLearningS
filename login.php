@@ -10,5 +10,5 @@ else {
     $username = $user->get_user();
     $_SESSION['user'] = $username[0];
 }
-header( 'Location: ad.php' )
+header( 'Location: index.php' )
 ?>
