@@ -4,41 +4,25 @@
         var $page;
         
         function __construct() {
-            if($_GET["subject"]==NULL) $this->page = "index";
-            elseif($_GET["topic"]==NULL) $this->page = "topic-index";
-            elseif($_GET["subtopic"]==NULL) $this->page = "subtopic-index";
-            else $this->page = "notes";
+            $this->set_page();
         }
         
         function set_page() {
-            if($_GET["subject"]==NULL) $this->page = "index";
-            elseif($_GET["topic"]==NULL) $this->page = "topic-index";
-            elseif($_GET["subtopic"]==NULL) $this->page = "subtopic-index";
-            else $this->page = "notes";
-        }
-        
-        function if_page($i,$ti,$sti,$n) {
-            if($this->page=="index") return $i;
-            if($this->page=="topic-index") return $ti;
-            if($this->page=="subtopic-index") return $sti;
-            if($this->page=="notes") return $n;
+            if($_GET['page']=='topics') $this->page = 't';
+            if($_GET['page']=='subtopics') $this->page = 's';
+            if($_GET['page']=='notes') $this->page = 'n';
+            if($_GET['page']=='signup') $this->page = 'su';
+            if($_GET['page']=='login') $this->page = 'li';
+            if($_GET['page']=='logout') $this->page = 'lo';
+            if($_GET['page']=='add') $this->page = 'a';
+            if($_GET['page']=='edit') $this->page = 'e';
+            else $this->page = "i";
         }
         
         function get_page() {
             return $this->page;
         }
     
-    }
-    
-    class title {
-        
-        var $title;
-        
-        function get_title() {
-            global $page;
-            return $page->if_page("Subject Index","Topic Index for ".$_GET["subject"],"Subtopic Index for ".$_GET["topic"],"Notes for ".$_GET["subtopic"]);
-        }
-        
     }
     
     class user {
@@ -64,50 +48,59 @@
                 return $result->fetch();
             }
         }
-        
-        function is_loggedin($yes,$no) {
-            if(isset($_SESSION['user'])) {
-                return $yes;
-            }
-            else {
-                return $no;
-            }
-        }
     }
     
-    function accessdb() {
-    global $database;
-    global $page;
-    $query = "SELECT Subject, Topic, Subtopic, Notes FROM Revision";
-    $result = $database->arrayQuery($query);
-    $item = array();
-    foreach($result as $value) {
-        if($page->get_page()=="index") {
-            $item[] = $value[Subject];
-        }
-        if($page->get_page()=="topic-index") {
-            if($value[Subject]==$_GET["subject"]) {
-                $item[] = $value[Topic];
+    class notes {
+        
+        query_database($query) {
+            global $database;
+            global $page;
+            return $database->arrayQuery($query);
+        
+        get_subjects() {
+            $result = $this->query_database('SELECT Subject FROM Revision');
+            $item = array();
+            foreach($result as $value) {
+                $item[] = $value['Subject'];
             }
+            return array_unique($item);
         }
-        if($page->get_page()=="subtopic-index") {
-            if($value[Subject]==$_GET["subject"]) {
-                if($value[Topic]==$_GET["topic"]) {
-                    $item[] = $value[Subtopic];
+        
+        get_topics() {
+            $result = $this->query_database('SELECT Subject, Topic FROM Revision');
+            $item = array();
+            foreach($result as $value) {
+                if($value['Subject']==$_GET['subject']) {
+                    $item[] = $value['Topic'];
                 }
             }
+            return array_unique($item);
         }
-        if($page->get_page()=="notes") {
-            if($value[Subject]==$_GET["subject"]) {
-                if($value[Topic]==$_GET["topic"]) {
-                    if($value[Subtopic]==$_GET["subtopic"]) {
-                        $item[] = $value[Notes];
+        
+        get_subtopics() {
+            $result = $this->query_database('SELECT Subject, Topic, Subtopic FROM Revision');
+            $item = array();
+            foreach($result as $value) {
+                if($value['Subject']==$_GET['subject']) {
+                    if($value['Topic']==$_GET['topic']) {
+                        $item[] = $value['Subtopic'];
+                    }
+                }
+            }
+            return array_unique($item);
+        }
+        
+        get_notes() {
+            $result = $this->query_database('SELECT Subject, Topic, Subtopic, Notes FROM Revision');
+            if($result['Subject']==$_GET['subject']) {
+                if($result['Topic']==$_GET['topic']) {
+                    if($result['Subtopic']==$_GET['subtopic']) {
+                        return $value[Notes];
                     }
                 }
             }
         }
-    }
-    $item = array_unique($item);
+            
     if($page->get_page()=="notes") {
         echo $item[0];
     }
