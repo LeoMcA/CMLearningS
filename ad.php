@@ -5,7 +5,8 @@
 </head>
 <body>
 <?php
-session_start();
+    session_start();
+    echo "<a href='logout.php'>Logout</a>";
     if(isset($_SESSION['user'])) {
         echo "<form action='add.php' method='post'>" .
             "Subject: <br><input type='text' name='subject'><br>" .
