@@ -7,6 +7,7 @@ if($user->get_user()=='false') {
 }
 else {
     session_start();
-    $_SESSION['user'] = $user->get_user();
+    $username = $user->get_user();
+    $_SESSION['user'] = $username[0];
 }
 ?>

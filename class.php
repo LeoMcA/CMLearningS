@@ -61,7 +61,7 @@
                 return 'false';
             }
             else {
-                return $result;
+                return $result->fetch();
             }
         }
     }
