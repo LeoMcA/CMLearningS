@@ -2,7 +2,7 @@
 include('class.php');
 $database = new SQLiteDatabase('db.sqlite', 0666);
 $user = new user;
-if($user->get_user()==false) {
+if($user->get_user()=='false') {
     echo 'user dosdf exist';
 }
 else {
