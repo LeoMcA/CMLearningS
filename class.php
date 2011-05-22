@@ -58,10 +58,10 @@
             $query = "SELECT username FROM user WHERE username = '".$_POST['username']."' AND hash = '".$hash."';";
             $result = $database->query($query);
             if ($result->numRows() < 1) {
-    echo 'Sorry, your username or password was incorrect!';
+                return 'false';
             }
             else {
-    printf('Welcome back %s!', $_POST['username']);
+                return $result;
             }
         }
     }
