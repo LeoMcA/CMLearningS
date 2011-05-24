@@ -61,10 +61,12 @@
         
         function get_notes() {
             $result = $this->query_database('SELECT Subject, Topic, Subtopic, Notes FROM Revision');
-            if($result['Subject']==$_GET['subject']) {
-                if($result['Topic']==$_GET['topic']) {
-                    if($result['Subtopic']==$_GET['subtopic']) {
-                        return $value[Notes];
+            foreach($result as $value) {
+                if($value['Subject']==$_GET['subject']) {
+                    if($value['Topic']==$_GET['topic']) {
+                        if($value['Subtopic']==$_GET['subtopic']) {
+                            return $value['Notes'];
+                      }
                     }
                 }
             }
