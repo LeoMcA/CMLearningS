@@ -26,15 +26,16 @@
     </script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title></title>
 </head>
 <body>
     <header>
     <nav>
-    <a class='add'>Add</a>
-    <a class='edit'>Edit</a>
-    <a class='signup'>Sign up</a>
-    <a class='login'>Login</a>
+    <a class='add' href='#'>Add</a>
+    <a class='edit' href='#'>Edit</a>
+    <a class='signup' href='#'>Sign up</a>
+    <a class='login' href='#'>Login</a>
     <a href='index.php?page=logout'>Logout</a>
     </nav>
     <h1></h1>
