@@ -80,8 +80,8 @@
         }
         
         if($page->get_page()=='e') {
-            $query = 'DELETE FROM Revision' .
-                'WHERE Subject="'.$_POST["subject"].'" AND Topic="'.$_POST["topic"].'" AND Subtopic="'.$_POST["subtopic"].'"';
+            $query = 'DELETE FROM Revision ' .
+                'WHERE Subject="'.$_POST["subject"].'" AND Topic="'.$_POST["topic"].'" AND Subtopic="'.$_POST["subtopic"].'";';
             $database->queryExec($query);
             
             $query = 'INSERT INTO Revision (Subject, Topic, Subtopic, Notes)' .
