@@ -56,6 +56,7 @@
             global $database;
             global $page;
             return $database->arrayQuery($query);
+        }
         
         get_subjects() {
             $result = $this->query_database('SELECT Subject FROM Revision');
@@ -100,18 +101,18 @@
                 }
             }
         }
-            
-    if($page->get_page()=="notes") {
-        echo $item[0];
-    }
-    else {
-        echo "<ul>";
-        foreach($item as $value) {
-            echo "<li><a href=\"index.php?subject=";
-            echo $page->if_page(NULL,$_GET["subject"]."&topic=",$_GET["subject"]."&topic=".$_GET["topic"]."&subtopic=",NULL); 
-            echo $value."\">".$value."</a></li>";
+        
+        print_list($item) {
+             foreach($item as $value) {
+                echo "<li><a href=\"index.php?subject=";
+                echo $page->if_page(NULL,$_GET["subject"]."&topic=",$_GET["subject"]."&topic=".$_GET["topic"]."&subtopic=",NULL); 
+                echo $value."\">".$value."</a></li>";
+            }
         }
-        echo "</ul>";
-    }
+        
+        print_notes($item) {
+            echo $item[0];
+        }
+        
     }
 ?>
