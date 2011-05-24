@@ -7,6 +7,8 @@
 
     $page = new page;
     
+    $user = new user;
+    
     $database = new SQLiteDatabase('db.sqlite', 0666);
 ?>
 <!doctype html>
@@ -27,7 +29,6 @@
 <body>
     <a href='logout.php'>Logout</a>
     <h1><?php printf(); ?></h1>
-    $user = new user;
     <?php
         if($page->get_page()=='i') {
             $page->print_list($page->get_subjects());
