@@ -24,11 +24,21 @@
             theme_advanced_buttons3_add : 'fullpage'
         });
     </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
     <title></title>
 </head>
 <body>
+    <header>
+    <nav>
+    <a class='add'>Add</a>
+    <a class='edit'>Edit</a>
+    <a class='signup'>Sign up</a>
+    <a class='login'>Login</a>
     <a href='index.php?page=logout'>Logout</a>
+    </nav>
     <h1></h1>
+    </header>
     <?php
         if($page->get_page()=='i') {
             $page->print_list($page->get_subjects());
@@ -92,29 +102,31 @@
         }
         
     ?>
-    <form action='index.php?page=add' method='post'>
+    <div class='drop-down'>
+    <form action='index.php?page=add' method='post' class='add'>
     Subject: <br><input type='text' name='subject'><br>
     Topic: <br><input type='text' name='topic'><br>
     Subtopic: <br><input type='text' name='subtopic'><br>
     Notes: <br><textarea style='width:100%;height:500px;' name='notes'></textarea><br>
     <input type='submit' value='Submit'>
     </form>
-    <form action='index.php?page=edit' method='post'>
+    <form action='index.php?page=edit' method='post' class='edit'>
     Subject: <br><input type='text' name='subject' value='<?php printf($_GET['subject']); ?>'><br>
     Topic: <br><input type='text' name='topic' value='<?php printf($_GET['topic']); ?>'><br>
     Subtopic: <br><input type='text' name='subtopic' value='<?php printf($_GET['subtopic']); ?>'><br>
     Notes: <br><textarea style='width:100%;height:500px;' name='notes'><?php $page->print_notes($page->get_notes()); ?></textarea><br>
     <input type='submit' value='Submit'>
     </form>
-    <form action='index.php?page=login' method='post'>
+    <form action='index.php?page=login' method='post' class='login'>
     Username: <br><input type='text' name='username'><br>
     Password: <br><input type='password' name='password'><br>
     <input type='submit' value='Submit'>
     </form>
-    <form action='index.php?page=signup' method='post'>
+    <form action='index.php?page=signup' method='post' class='signup'>
     Username: <br><input type='text' name='username'><br>
     Password: <br><input type='password' name='password'><br>
     <input type='submit' value='Submit'>
     </form>
+    </div>
 </body>
 </html>
