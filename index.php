@@ -24,11 +24,11 @@
             theme_advanced_buttons3_add : 'fullpage'
         });
     </script>
-    <title><?php printf(); ?></title>
+    <title></title>
 </head>
 <body>
     <a href='logout.php'>Logout</a>
-    <h1><?php printf(); ?></h1>
+    <h1></h1>
     <?php
         if($page->get_page()=='i') {
             $page->print_list($page->get_subjects());
