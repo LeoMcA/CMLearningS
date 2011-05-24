@@ -3,10 +3,6 @@
         
         var $page;
         
-        function __construct() {
-            $this->set_page();
-        }
-        
         function set_page() {
             if($_GET['page']=='topics') $this->page = 't';
             if($_GET['page']=='subtopics') $this->page = 's';
@@ -20,6 +16,7 @@
         }
         
         function get_page() {
+            $this->set_page();
             return $this->page;
         }
         
