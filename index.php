@@ -78,12 +78,32 @@
 
             header( 'Location: index.php?page=notes&subject=' .  $_POST["subject"] . '&topic=' . $_POST["topic"] . '&subtopic=' . $_POST["subtopic"]);
         }
+        
+        if($page->get_page()=='e') {
+            $query = 'DELETE FROM Revision' .
+                'WHERE Subject="'.$_POST["subject"].'" AND Topic="'.$_POST["topic"].'" AND Subtopic="'.$_POST["subtopic"].'"';
+            $database->queryExec($query);
+            
+            $query = 'INSERT INTO Revision (Subject, Topic, Subtopic, Notes)' .
+                'VALUES ("' . $_POST["subject"] . '", "' . $_POST["topic"] . '", "' . $_POST["subtopic"] . '", \'' . $_POST["notes"] . '\');';
+            $database->queryExec($query);
+
+            header( 'Location: index.php?page=notes&subject=' .  $_POST["subject"] . '&topic=' . $_POST["topic"] . '&subtopic=' . $_POST["subtopic"]);
+        }
+        
     ?>
     <form action='index.php?page=add' method='post'>
     Subject: <br><input type='text' name='subject'><br>
     Topic: <br><input type='text' name='topic'><br>
     Subtopic: <br><input type='text' name='subtopic'><br>
     Notes: <br><textarea style='width:100%;height:500px;' name='notes'></textarea><br>
+    <input type='submit' value='Submit'>
+    </form>
+    <form action='index.php?page=edit' method='post'>
+    Subject: <br><input type='text' name='subject' value='<?php printf($_GET['subject']); ?>'><br>
+    Topic: <br><input type='text' name='topic' value='<?php printf($_GET['topic']); ?>'><br>
+    Subtopic: <br><input type='text' name='subtopic' value='<?php printf($_GET['subtopic']); ?>'><br>
+    Notes: <br><textarea style='width:100%;height:500px;' name='notes'><?php $page->print_notes($page->get_notes()); ?></textarea><br>
     <input type='submit' value='Submit'>
     </form>
     <form action='index.php?page=login' method='post'>
