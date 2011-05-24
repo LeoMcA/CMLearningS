@@ -90,7 +90,7 @@
              foreach($item as $value) {
                 printf('<li><a href="');
                 $this->print_url($value);
-                printf('>%s</a></li>',$value);
+                printf('">%s</a></li>',$value);
             }
         }
         
