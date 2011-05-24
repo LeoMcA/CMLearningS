@@ -22,35 +22,6 @@
         function get_page() {
             return $this->page;
         }
-    
-    }
-    
-    class user {
-        
-        function set_user() {
-            global $database;
-            $query = 'CREATE TABLE user (username TEXT, hash TEXT);';
-            $database->queryExec($query);
-            $hash = sha1($_POST['password']);
-            $query = "INSERT INTO user (username, hash) VALUES ('".$_POST['username']."', '".$hash."');";
-            $database->queryExec($query);
-        }
-        
-        function get_user() {
-            global $database;
-            $hash = sha1($_POST['password']);
-            $query = "SELECT username FROM user WHERE username = '".$_POST['username']."' AND hash = '".$hash."';";
-            $result = $database->query($query);
-            if ($result->numRows() < 1) {
-                return 'false';
-            }
-            else {
-                return $result->fetch();
-            }
-        }
-    }
-    
-    class notes {
         
         function query_database($query) {
             global $database;
@@ -104,13 +75,13 @@
         
         function print_url($value) {
             printf("<li><a href=\"index.php?page=");
-            if ($page->get_page()=='i') {
+            if ($this->get_page()=='i') {
                 printf("topics&subject=");
             }
-            if ($page->get_page()=='t') {
+            if ($this->get_page()=='t') {
                 printf("subtopics&subject=%s&topic=",$_GET["subject"]);
             }
-            if ($page->get_page()=='s') {
+            if ($this->get_page()=='s') {
                 printf("notes&subject=%s&topic=%s&subtopic=",$_GET["subject"],$_GET["topic"]);
             }
             printf('%s">%s</a></li>',$value,$value);
@@ -126,5 +97,30 @@
             echo $item[0];
         }
         
+    }
+    
+    class user {
+        
+        function set_user() {
+            global $database;
+            $query = 'CREATE TABLE user (username TEXT, hash TEXT);';
+            $database->queryExec($query);
+            $hash = sha1($_POST['password']);
+            $query = "INSERT INTO user (username, hash) VALUES ('".$_POST['username']."', '".$hash."');";
+            $database->queryExec($query);
+        }
+        
+        function get_user() {
+            global $database;
+            $hash = sha1($_POST['password']);
+            $query = "SELECT username FROM user WHERE username = '".$_POST['username']."' AND hash = '".$hash."';";
+            $result = $database->query($query);
+            if ($result->numRows() < 1) {
+                return 'false';
+            }
+            else {
+                return $result->fetch();
+            }
+        }
     }
 ?>
