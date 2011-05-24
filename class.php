@@ -52,13 +52,13 @@
     
     class notes {
         
-        query_database($query) {
+        function query_database($query) {
             global $database;
             global $page;
             return $database->arrayQuery($query);
         }
         
-        get_subjects() {
+        function get_subjects() {
             $result = $this->query_database('SELECT Subject FROM Revision');
             $item = array();
             foreach($result as $value) {
@@ -67,7 +67,7 @@
             return array_unique($item);
         }
         
-        get_topics() {
+        function get_topics() {
             $result = $this->query_database('SELECT Subject, Topic FROM Revision');
             $item = array();
             foreach($result as $value) {
@@ -78,7 +78,7 @@
             return array_unique($item);
         }
         
-        get_subtopics() {
+        function get_subtopics() {
             $result = $this->query_database('SELECT Subject, Topic, Subtopic FROM Revision');
             $item = array();
             foreach($result as $value) {
@@ -91,7 +91,7 @@
             return array_unique($item);
         }
         
-        get_notes() {
+        function get_notes() {
             $result = $this->query_database('SELECT Subject, Topic, Subtopic, Notes FROM Revision');
             if($result['Subject']==$_GET['subject']) {
                 if($result['Topic']==$_GET['topic']) {
@@ -102,15 +102,27 @@
             }
         }
         
-        print_list($item) {
+        function print_url($value) {
+            printf("<li><a href=\"index.php?page=");
+            if ($page->get_page()=='i') {
+                printf("topics&subject=");
+            }
+            if ($page->get_page()=='t') {
+                printf("subtopics&subject=%s&topic=",$_GET["subject"]);
+            }
+            if ($page->get_page()=='s') {
+                printf("notes&subject=%s&topic=%s&subtopic=",$_GET["subject"],$_GET["topic"]);
+            }
+            printf('%s">%s</a></li>',$value,$value);
+        }
+        
+        function print_list($item) {
              foreach($item as $value) {
-                echo "<li><a href=\"index.php?subject=";
-                echo $page->if_page(NULL,$_GET["subject"]."&topic=",$_GET["subject"]."&topic=".$_GET["topic"]."&subtopic=",NULL); 
-                echo $value."\">".$value."</a></li>";
+                $this->print_url($value);
             }
         }
         
-        print_notes($item) {
+        function print_notes($item) {
             echo $item[0];
         }
         
