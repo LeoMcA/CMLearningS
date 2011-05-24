@@ -5,13 +5,13 @@
         
         function set_page() {
             if($_GET['page']=='topics') $this->page = 't';
-            if($_GET['page']=='subtopics') $this->page = 's';
-            if($_GET['page']=='notes') $this->page = 'n';
-            if($_GET['page']=='signup') $this->page = 'su';
-            if($_GET['page']=='login') $this->page = 'li';
-            if($_GET['page']=='logout') $this->page = 'lo';
-            if($_GET['page']=='add') $this->page = 'a';
-            if($_GET['page']=='edit') $this->page = 'e';
+            elseif($_GET['page']=='subtopics') $this->page = 's';
+            elseif($_GET['page']=='notes') $this->page = 'n';
+            elseif($_GET['page']=='signup') $this->page = 'su';
+            elseif($_GET['page']=='login') $this->page = 'li';
+            elseif($_GET['page']=='logout') $this->page = 'lo';
+            elseif($_GET['page']=='add') $this->page = 'a';
+            elseif($_GET['page']=='edit') $this->page = 'e';
             else $this->page = "i";
         }
         
