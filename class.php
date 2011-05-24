@@ -73,7 +73,7 @@
         }
         
         function print_url($value) {
-            printf("<li><a href=\"index.php?page=");
+            printf('index.php?page=');
             if ($this->get_page()=='i') {
                 printf("topics&subject=");
             }
@@ -83,12 +83,14 @@
             if ($this->get_page()=='s') {
                 printf("notes&subject=%s&topic=%s&subtopic=",$_GET["subject"],$_GET["topic"]);
             }
-            printf('%s">%s</a></li>',$value,$value);
+            printf('%s',$value);
         }
         
         function print_list($item) {
              foreach($item as $value) {
+                printf('<li><a href="');
                 $this->print_url($value);
+                printf('>%s</a></li>',$value);
             }
         }
         
