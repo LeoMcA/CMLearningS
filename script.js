@@ -1,11 +1,11 @@
 $(document).ready(function() {
-    $('a.add').hide();
+    $('form.add').hide();
     
-    $('a.edit').hide();
+    $('form.edit').hide();
     
-    $('a.signup').hide();
+    $('form.signup').hide();
     
-    $('a.login').hide();
+    $('form.login').hide();
     
     $('a.add').click(function() {
         $('form.add').slideToggle('slow', function() {
