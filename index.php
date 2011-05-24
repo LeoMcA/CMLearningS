@@ -46,6 +46,11 @@
             $page->print_notes($page->get_notes());
         }
         
+        if($page->get_page()=='su') {
+            $user->set_user();
+            printf('Signed up');
+        }
+        
         if($page->get_page()=='li') {
             if($user->get_user()=='false') {
                 printf('Sorry, that user does not exsist');
@@ -86,7 +91,7 @@
     Password: <br><input type='password' name='password'><br>
     <input type='submit' value='Submit'>
     </form>
-    <form action='create_user.php' method='post'>
+    <form action='index.php?page=signup' method='post'>
     Username: <br><input type='text' name='username'><br>
     Password: <br><input type='password' name='password'><br>
     <input type='submit' value='Submit'>
