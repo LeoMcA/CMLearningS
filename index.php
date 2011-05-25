@@ -42,6 +42,7 @@
         printf("<a class='signup' href='#'>Sign up</a>");
         printf("<a class='login' href='#'>Login</a>");
     }
+    ?>
     </nav>
     ?>
     <h1></h1>
