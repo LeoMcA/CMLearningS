@@ -32,12 +32,18 @@
 <body>
     <header>
     <nav>
-    <a class='add' href='#'>Add</a>
-    <a class='edit' href='#'>Edit</a>
-    <a class='signup' href='#'>Sign up</a>
-    <a class='login' href='#'>Login</a>
-    <a href='index.php?page=logout'>Logout</a>
+    <?php
+    if($user->is_loggedin()=='true') {
+        printf("<a class='add' href='#'>Add</a>");
+        printf("<a class='edit' href='#'>Edit</a>");
+        printf("<a href='index.php?page=logout'>Logout %s</a>",$_SESSION['user']);
+    }
+    if($user->is_loggedin()=='false') {
+        printf("<a class='signup' href='#'>Sign up</a>");
+        printf("<a class='login' href='#'>Login</a>");
+    }
     </nav>
+    ?>
     <h1></h1>
     </header>
     <?php

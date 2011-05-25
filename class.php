@@ -123,5 +123,10 @@
                 return $result->fetch();
             }
         }
+        
+        function is_loggedin() {
+            if(isset($_SESSION['user'])) return 'true';
+            else return 'false';
+        }
     }
 ?>
