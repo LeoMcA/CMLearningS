@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    if(file_exists('db.sqlite')); else header( 'Location: add.html' );
+    // if(file_exists('db.sqlite')); else header( 'Location: add.html' );
 
     include('class.php');
 
