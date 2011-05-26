@@ -27,11 +27,16 @@ padding: 7px;
 }
 
 header h1 {
-    font-size: 2em;
+    font-size: 1em;
+font-weight: normal;
 }
 
 header span {
     padding: 5px;
+}
+
+page {
+padding: 10px;
 }
 
 .drop-down {

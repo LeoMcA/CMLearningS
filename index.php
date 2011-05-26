@@ -39,6 +39,7 @@
     </nav>
     <h1><?php $page->print_bread(); ?></h1>
     </header>
+    <page>
     <?php
         if($page->get_page()=='i') {
             $page->print_list($page->get_subjects());
@@ -83,7 +84,7 @@
             $database->queryExec($query);
 
             $query = 'INSERT INTO Revision (Subject, Topic, Subtopic, Notes)' .
-                'VALUES ("' . $_POST["subject"] . '", "' . $_POST["topic"] . '", "' . $_POST["subtopic"] . '", \'' . $_POST["notes"] . '\');';
+                'VALUES ("' . $_POST["subject"] . '", "' . $_POST["topic"] . '", "' . $_POST["subtopic"] . '", "' . $_POST["notes"] . '");';
             $database->queryExec($query);
 
             header( 'Location: index.php?page=notes&subject=' .  $_POST["subject"] . '&topic=' . $_POST["topic"] . '&subtopic=' . $_POST["subtopic"]);
@@ -95,13 +96,14 @@
             $database->queryExec($query);
             
             $query = 'INSERT INTO Revision (Subject, Topic, Subtopic, Notes)' .
-                'VALUES ("' . $_POST["subject"] . '", "' . $_POST["topic"] . '", "' . $_POST["subtopic"] . '", \'' . $_POST["notes"] . '\');';
+                'VALUES ("' . $_POST["subject"] . '", "' . $_POST["topic"] . '", "' . $_POST["subtopic"] . '", "' . $_POST["notes"] . '");';
             $database->queryExec($query);
 
             header( 'Location: index.php?page=notes&subject=' .  $_POST["subject"] . '&topic=' . $_POST["topic"] . '&subtopic=' . $_POST["subtopic"]);
         }
         
     ?>
+    </page>
     <div class='drop-down'>
     <form action='index.php?page=add' method='post' class='add'>
     Subject: <br><input type='text' name='subject'><br>
