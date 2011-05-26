@@ -37,7 +37,7 @@
     }
     ?>
     </nav>
-    <h1></h1>
+    <h1><?php $page->print_bread(); ?></h1>
     </header>
     <?php
         if($page->get_page()=='i') {

@@ -98,6 +98,33 @@
             echo $item;
         }
         
+        function print_bread() {
+            if ($this->get_page()=='i') {
+                printf("Leo's Notes");
+            }
+            if ($this->get_page()=='t') {
+                printf("Leo's Notes");
+                printf("<span>&#62;</span>");
+                printf($_GET["subject"]);
+            }
+            if ($this->get_page()=='s') {
+                printf("Leo's Notes");
+                printf("<span>&#62;</span>");
+                printf($_GET["subject"]);
+                printf("<span>&#62;</span>");
+                printf($_GET["topic"]);
+            }
+            if ($this->get_page()=='n') {
+                printf("Leo's Notes");
+                printf("<span>&#62;</span>");
+                printf($_GET["subject"]);
+                printf("<span>&#62;</span>");
+                printf($_GET["topic"]);
+                printf("<span>&#62;</span>");
+                printf($_GET["subtopic"]);
+            }
+        }
+        
     }
     
     class user {

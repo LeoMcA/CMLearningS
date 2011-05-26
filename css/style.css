@@ -26,6 +26,14 @@ text-decoration: none;
 padding: 7px;
 }
 
+header h1 {
+    font-size: 2em;
+}
+
+header span {
+    padding: 5px;
+}
+
 .drop-down {
     float: right;
 }
