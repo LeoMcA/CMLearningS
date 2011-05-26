@@ -14,16 +14,7 @@
 <!doctype html>
 <html>
 <head>
-    <script type='text/javascript' src='tinymce/tiny_mce/tiny_mce.js'></script>
     <script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
-    <script type='text/javascript'>
-        tinyMCE.init({
-            theme : 'advanced',
-            mode : 'textareas',
-            plugins : 'fullpage',
-            theme_advanced_buttons3_add : 'fullpage'
-        });
-    </script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
