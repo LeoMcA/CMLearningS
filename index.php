@@ -25,21 +25,52 @@
 <body>
     <header>
     <nav>
+    <h1><?php $page->print_bread(); ?></h1>
     <?php
     if($user->is_loggedin()=='true') {
-        printf("<a class='add' href='#'>Add</a>");
-        printf("<a class='edit' href='#'>Edit</a>");
-        printf("<a href='index.php?page=logout'>Logout %s</a>",$_SESSION['user']);
+        printf("<ul class='links'><li><a class='add' href='#'>Add</a></li>");
+        printf("<li><a class='edit' href='#'>Edit</a></li>");
+        printf("<li><a href='index.php?page=logout'>Logout %s</a></li></ul>",$_SESSION['user']);
     }
     if($user->is_loggedin()=='false') {
-        printf("<a class='signup' href='#'>Sign up</a>");
-        printf("<a class='login' href='#'>Login</a>");
+        printf("<ul class='links'><li><a class='signup' href='#'>Sign up</a></li>");
+        printf("<li><a class='login' href='#'>Login</a></li></ul>");
     }
     ?>
     </nav>
-    <h1><?php $page->print_bread(); ?></h1>
     </header>
-    <page>
+<section class='main'>
+    <section class='drop-down'>
+    <form action='index.php?page=add' method='post' class='add'>
+<aside class='names'>
+    <input type='text' name='subject' placeholder='Subject'><br>
+    <input type='text' name='topic' placeholder='Topic'><br>
+    <input type='text' name='subtopic' placeholder='Subtopic'><br>
+    <input type='submit' value='Submit'>
+</aside>
+    <aside class='notes'><textarea name='notes' placeholder='Notes'></textarea></aside><br>
+    </form>
+    <form action='index.php?page=edit' method='post' class='edit'>
+<aside class='names'>
+    <input type='text' name='subject' placeholder='Subject' value='<?php printf($_GET['subject']); ?>'><br>
+    <input type='text' name='topic' placeholder='Topic' value='<?php printf($_GET['topic']); ?>'><br>
+    <input type='text' name='subtopic' placeholder='Subtopic' value='<?php printf($_GET['subtopic']); ?>'><br>
+    <input type='submit' value='Submit'>
+</aside>
+    <aside class='notes'><textarea name='notes' placeholder='Notes'><?php $page->print_notes($page->get_notes()); ?></textarea></aside><br>
+    </form>
+    <form action='index.php?page=login' method='post' class='login'>
+    Username: <br><input type='text' name='username'><br>
+    Password: <br><input type='password' name='password'><br>
+    <input type='submit' value='Submit'>
+    </form>
+    <form action='index.php?page=signup' method='post' class='signup'>
+    Username: <br><input type='text' name='username'><br>
+    Password: <br><input type='password' name='password'><br>
+    <input type='submit' value='Submit'>
+    </form>
+    </section>
+    <article>
     <?php
         if($page->get_page()=='i') {
             $page->print_list($page->get_subjects());
@@ -103,32 +134,7 @@
         }
         
     ?>
-    </page>
-    <div class='drop-down'>
-    <form action='index.php?page=add' method='post' class='add'>
-    Subject: <br><input type='text' name='subject'><br>
-    Topic: <br><input type='text' name='topic'><br>
-    Subtopic: <br><input type='text' name='subtopic'><br>
-    Notes: <br><textarea style='width:100%;height:500px;' name='notes'></textarea><br>
-    <input type='submit' value='Submit'>
-    </form>
-    <form action='index.php?page=edit' method='post' class='edit'>
-    Subject: <br><input type='text' name='subject' value='<?php printf($_GET['subject']); ?>'><br>
-    Topic: <br><input type='text' name='topic' value='<?php printf($_GET['topic']); ?>'><br>
-    Subtopic: <br><input type='text' name='subtopic' value='<?php printf($_GET['subtopic']); ?>'><br>
-    Notes: <br><textarea style='width:100%;height:500px;' name='notes'><?php $page->print_notes($page->get_notes()); ?></textarea><br>
-    <input type='submit' value='Submit'>
-    </form>
-    <form action='index.php?page=login' method='post' class='login'>
-    Username: <br><input type='text' name='username'><br>
-    Password: <br><input type='password' name='password'><br>
-    <input type='submit' value='Submit'>
-    </form>
-    <form action='index.php?page=signup' method='post' class='signup'>
-    Username: <br><input type='text' name='username'><br>
-    Password: <br><input type='password' name='password'><br>
-    <input type='submit' value='Submit'>
-    </form>
-    </div>
+    </article>
+    </section>
 </body>
 </html>

@@ -100,28 +100,22 @@
         
         function print_bread() {
             if ($this->get_page()=='i') {
-                printf("Leo's Notes");
+                printf("<ul class='bread'><li>Leo's Notes</li></ul>");
             }
             if ($this->get_page()=='t') {
-                printf("Leo's Notes");
-                printf("<span>&#62;</span>");
-                printf($_GET["subject"]);
+                printf("<ul class='bread'><li>Leo's Notes</li>");
+                printf("<li>%s</li></ul>",$_GET["subject"]);
             }
             if ($this->get_page()=='s') {
-                printf("Leo's Notes");
-                printf("<span>&#62;</span>");
-                printf($_GET["subject"]);
-                printf("<span>&#62;</span>");
-                printf($_GET["topic"]);
+                printf("<ul class='bread'><li>Leo's Notes</li>");
+                printf("<li>%s</li>",$_GET["subject"]);
+                printf("<li>%s</li></ul>",$_GET["topic"]);
             }
             if ($this->get_page()=='n') {
-                printf("Leo's Notes");
-                printf("<span>&#62;</span>");
-                printf($_GET["subject"]);
-                printf("<span>&#62;</span>");
-                printf($_GET["topic"]);
-                printf("<span>&#62;</span>");
-                printf($_GET["subtopic"]);
+                printf("<ul class='bread'><li>Leo's Notes</li>");
+                printf("<li>%s</li>",$_GET["subject"]);
+                printf("<li>%s</li>",$_GET["topic"]);
+                printf("<li>%s</li></ul>",$_GET["subtopic"]);
             }
         }
         
