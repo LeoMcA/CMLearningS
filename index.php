@@ -115,7 +115,7 @@
             $database->queryExec($query);
 
             $query = 'INSERT INTO Revision (Subject, Topic, Subtopic, Notes)' .
-                'VALUES ("' . $_POST["subject"] . '", "' . $_POST["topic"] . '", "' . $_POST["subtopic"] . '", "' . $_POST["notes"] . '");';
+                'VALUES ("' . addslashes($_POST["subject"]) . '", "' . addslashes($_POST["topic"]) . '", "' . addslashes($_POST["subtopic"]) . '", "' . addslashes($_POST["notes"]) . '");';
             $database->queryExec($query);
 
             header( 'Location: index.php?page=notes&subject=' .  $_POST["subject"] . '&topic=' . $_POST["topic"] . '&subtopic=' . $_POST["subtopic"]);
@@ -127,7 +127,7 @@
             $database->queryExec($query);
             
             $query = 'INSERT INTO Revision (Subject, Topic, Subtopic, Notes)' .
-                'VALUES ("' . $_POST["subject"] . '", "' . $_POST["topic"] . '", "' . $_POST["subtopic"] . '", "' . $_POST["notes"] . '");';
+                'VALUES ("' . addslashes($_POST["subject"]) . '", "' . addslashes($_POST["topic"]) . '", "' . addslashes($_POST["subtopic"]) . '", "' . addslashes($_POST["notes"]) . '");';
             $database->queryExec($query);
 
             header( 'Location: index.php?page=notes&subject=' .  $_POST["subject"] . '&topic=' . $_POST["topic"] . '&subtopic=' . $_POST["subtopic"]);
