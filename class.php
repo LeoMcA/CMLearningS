@@ -103,18 +103,18 @@
                 printf("<ul class='bread'><li>Leo's Notes</li></ul>");
             }
             if ($this->get_page()=='t') {
-                printf("<ul class='bread'><li>Leo's Notes</li>");
+                printf("<ul class='bread'><li><a href='index.php'>Leo's Notes</a></li>");
                 printf("<li>%s</li></ul>",$_GET["subject"]);
             }
             if ($this->get_page()=='s') {
-                printf("<ul class='bread'><li>Leo's Notes</li>");
-                printf("<li>%s</li>",$_GET["subject"]);
+                printf("<ul class='bread'><li><a href='index.php'>Leo's Notes</a></li>");
+                printf("<li><a href='index.php?page=topics&subject=%s'>%s</a></li>",$_GET["subject"],$_GET["subject"]);
                 printf("<li>%s</li></ul>",$_GET["topic"]);
             }
             if ($this->get_page()=='n') {
-                printf("<ul class='bread'><li>Leo's Notes</li>");
-                printf("<li>%s</li>",$_GET["subject"]);
-                printf("<li>%s</li>",$_GET["topic"]);
+                printf("<ul class='bread'><li><a href='index.php'>Leo's Notes</a></li>");
+                printf("<li><a href='index.php?page=topics&subject=%s'>%s</a></li>",$_GET["subject"],$_GET["subject"]);
+                printf("<li><a href='index.php?page=subtopics&subject=%s&topic=%s'>%s</a></li>",$_GET["subject"],$_GET["topic"],$_GET["topic"]);
                 printf("<li>%s</li></ul>",$_GET["subtopic"]);
             }
         }
