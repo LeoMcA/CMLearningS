@@ -57,7 +57,7 @@
     <input type='text' name='subtopic' placeholder='Subtopic' value='<?php printf($_GET['subtopic']); ?>'><br>
     <input type='submit' value='Submit'>
 </aside>
-    <aside class='notes'><textarea name='notes' placeholder='Notes'><?php $page->print_notes($page->get_notes()); ?></textarea></aside><br>
+    <aside class='notes'><textarea name='notes' placeholder='Notes'><?php $page->print_notes($page->descape($page->get_notes())); ?></textarea></aside><br>
     </form>
     <form action='index.php?page=login' method='post' class='login'>
     Username: <br><input type='text' name='username'><br>
@@ -85,12 +85,12 @@
         }
         
         if($page->get_page()=='n') {
-            $page->print_notes($page->get_notes());
+            $page->print_notes($page->descape($page->get_notes()));
         }
         
         if($page->get_page()=='su') {
             $user->set_user();
-            printf('Signed up');
+            header( 'Location: index.php' );
         }
         
         if($page->get_page()=='li') {
@@ -100,13 +100,13 @@
             else {
                 $username = $user->get_user();
                 $_SESSION['user'] = $username[0];
-                printf('Logged in');
+                header( 'Location: index.php' );
             }
         }
         
         if($page->get_page()=='lo') {
             session_destroy();
-            printf('Loggged out');
+            header( 'Location: index.php' );
         }
         
         if($page->get_page()=='a') {
@@ -115,7 +115,7 @@
             $database->queryExec($query);
 
             $query = 'INSERT INTO Revision (Subject, Topic, Subtopic, Notes)' .
-                'VALUES ("' . sqlite_escape_string($_POST["subject"]) . '", "' . sqlite_escape_string($_POST["topic"]) . '", "' . sqlite_escape_string($_POST["subtopic"]) . '", "' . sqlite_escape_string($_POST["notes"]) . '");';
+                'VALUES ("' . $page->escape($_POST["subject"]) . '", "' . $page->escape($_POST["topic"]) . '", "' . $page->escape($_POST["subtopic"]) . '", "' . $page->escape($_POST["notes"]) . '");';
             $database->queryExec($query);
 
             header( 'Location: index.php?page=notes&subject=' .  $_POST["subject"] . '&topic=' . $_POST["topic"] . '&subtopic=' . $_POST["subtopic"]);
@@ -127,7 +127,7 @@
             $database->queryExec($query);
             
             $query = 'INSERT INTO Revision (Subject, Topic, Subtopic, Notes)' .
-                'VALUES ("' . sqlite_escape_string($_POST["subject"]) . '", "' . sqlite_escape_string($_POST["topic"]) . '", "' . sqlite_escape_string($_POST["subtopic"]) . '", "' . sqlite_escape_string($_POST["notes"]) . '");';
+                'VALUES ("' . $page->escape($_POST["subject"]) . '", "' . $page->escape($_POST["topic"]) . '", "' . $page->escape($_POST["subtopic"]) . '", "' . $page->escape($_POST["notes"]) . '");';
             $database->queryExec($query);
 
             header( 'Location: index.php?page=notes&subject=' .  $_POST["subject"] . '&topic=' . $_POST["topic"] . '&subtopic=' . $_POST["subtopic"]);

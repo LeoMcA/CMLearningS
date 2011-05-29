@@ -118,7 +118,14 @@
                 printf("<li>%s</li></ul>",$_GET["subtopic"]);
             }
         }
-        
+	
+		function escape($data) {
+			return sqlite_escape_string($data);
+		}
+
+		function descape($data) {
+			return str_replace("''", "'", $data);
+		}
     }
     
     class user {
